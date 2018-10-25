@@ -11,7 +11,7 @@ export default class ApplicationForm extends React.Component {
             maxStepsCount: props.schema.length,
             progress: 0,
             formData: new Map(), // stores inputted user data
-            stepIsCompleted: false // indicates, we can move next
+            isCurrentStepCompleted: false // indicates, we can move next
         };
         this.onBackClick = this.onBackClick.bind(this);
         this.onNextClick = this.onNextClick.bind(this);
@@ -20,6 +20,33 @@ export default class ApplicationForm extends React.Component {
 
     onFormDataChange(fieldId, value) {
         this.state.formData.set(fieldId, value);
+        this.setState({
+            isCurrentStepCompleted: this.isStepCompleted(this.state.progress)
+        });
+    }
+
+    /**
+    * Checks current step is completed and user can move on
+    */
+    isStepCompleted(progress) {
+        const isSummary = progress >= this.state.maxStepsCount;
+        if (isSummary === false) {
+            const schemaStep = this.props.schema[progress];
+            for (let i = 0; i < schemaStep.data.length; i++) {
+                const sdata = schemaStep.data[i];
+                const fv = this.state.formData.get(sdata.fieldId);
+                if (sdata.validateFunction && sdata.validateFunction(fv) === false) {
+                    // can define a specific checking for some fields (ex. email)
+                    return false;
+                }
+                else if (fv === null || fv === undefined || fv === '') {
+                    // common field value check
+                    return false;
+                }
+            }
+            return true;
+        }
+        return true;
     }
 
     onSubmitClick() {
@@ -29,15 +56,21 @@ export default class ApplicationForm extends React.Component {
     }
 
     onBackClick() {
+        const p = this.state.progress-1;
         this.setState({
-            progress:this.state.progress-1
+            progress: p,
+            isCurrentStepCompleted: this.isStepCompleted(p)
         });
     }
 
     onNextClick() {
-        this.setState({
-            progress: this.state.progress+1
-        });
+        if (this.state.isCurrentStepCompleted === true) {
+            const p = this.state.progress+1;
+            this.setState({
+                progress: p,
+                isCurrentStepCompleted: this.isStepCompleted(p)
+            });
+        }
     }
 
     render() {
@@ -70,7 +103,7 @@ export default class ApplicationForm extends React.Component {
                     <FormButton text="Back" onClick={this.onBackClick}/>
                 }
                 {isSummary === false &&
-                    <FormButton text="Next" onClick={this.onNextClick}/>
+                    <FormButton disabled={!this.state.isCurrentStepCompleted} text="Next" onClick={this.onNextClick}/>
                 }
                 {isSummary === true &&
                     <FormButton text="Submit" onClick={this.onSubmitClick}/>

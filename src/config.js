@@ -1,6 +1,7 @@
 import React from 'react'
 import FormInput from './components/FormInput'
 import FormRadioButtons from './components/FormRadioButtons'
+import { validateEmail } from './helper'
 
 /**
 * Allows to set up a form structure for various cases or test
@@ -19,7 +20,8 @@ export const TENANT_SCHEMA = [
                 fieldId: 'user_email',
                 title: 'User Email',
                 component: FormInput,
-                placeholder: 'myemail@gmail.com'
+                placeholder: 'myemail@gmail.com',
+                validateFunction: validateEmail
             }
         ]
     },

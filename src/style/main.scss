@@ -14,4 +14,9 @@ button {
     padding: 10px;
     color: #fff;
     border-radius: 4px;
+
+    &.__disabled {
+        background-color: #999;
+        cursor: initial;
+    }
 }
