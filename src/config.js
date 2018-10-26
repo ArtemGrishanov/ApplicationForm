@@ -8,7 +8,7 @@ import { validateEmail, validatePhoneNumber } from './helper'
 */
 export const TENANT_SCHEMA = [
     {
-        title: 'First step title',
+        title: 'Personal Info',
         data: [
             {
                 fieldId: 'user_name',
@@ -22,7 +22,12 @@ export const TENANT_SCHEMA = [
                 component: FormInput,
                 placeholder: 'me@example.com',
                 validateFunction: validateEmail
-            },
+            }
+        ]
+    },
+    {
+        title: 'Phone',
+        data: [
             {
                 fieldId: 'user_phone',
                 title: 'Phone Number',

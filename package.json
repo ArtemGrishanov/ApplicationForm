@@ -6,7 +6,18 @@
   "scripts": {
     "webpack": "webpack -d --watch",
     "start": "webpack-dev-server --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:clear": "jest -u",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "setupFiles": [
+      "./src/test/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ]
   },
   "repository": {
     "type": "git",
@@ -27,12 +38,20 @@
   },
   "homepage": "https://github.com/ArtemGrishanov/ApplicationForm#readme",
   "devDependencies": {
+    "@types/enzyme": "^3.1.14",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.6.0",
     "node-sass": "^4.9.4",
+    "react-addons-test-utils": "^15.6.2",
+    "react-scripts-ts": "^3.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.23.0",

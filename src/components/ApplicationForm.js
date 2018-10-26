@@ -70,9 +70,9 @@ export default class ApplicationForm extends React.Component {
     }
 
     onSubmitClick() {
-        //TODO submit action
-        console.log(this.state.formData);
-        alert('Submitted! Data printed to console.');
+        if (this.props.onSubmit) {
+            this.props.onSubmit(this.state.formData);
+        }
     }
 
     onBackClick() {

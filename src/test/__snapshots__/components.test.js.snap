@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplicationForm rendering 1`] = `
+<div
+  className="frm_wr"
+>
+  <div
+    className="frm_cont"
+  >
+    <ProgressBar
+      percentage={1}
+    />
+    <div
+      className="frm_data mt20 __shown"
+    >
+      <p
+        className="frm_ttl"
+      >
+        Personal Info
+      </p>
+      <div
+        className="frm_data_i"
+        key="Full Name"
+      >
+        <p
+          className="frm_data_ttl"
+        >
+          Full Name
+        </p>
+        <FormInput
+          component={[Function]}
+          fieldId="user_name"
+          onValueChange={[Function]}
+          placeholder="Hans Müller"
+          title="Full Name"
+        />
+      </div>
+      <div
+        className="frm_data_i"
+        key="Email"
+      >
+        <p
+          className="frm_data_ttl"
+        >
+          Email
+        </p>
+        <FormInput
+          component={[Function]}
+          fieldId="user_email"
+          onValueChange={[Function]}
+          placeholder="me@example.com"
+          title="Email"
+          validateFunction={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="frm_btns"
+    >
+      <FormButton
+        disabled={true}
+        onClick={[Function]}
+        text="Next"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormButton rendering... 1`] = `
+<button
+  className="btn"
+  onClick={[Function]}
+>
+  Text
+</button>
+`;
+
+exports[`FormInput rendering... 1`] = `
+<input
+  className="formInput"
+  defaultValue=""
+  maxLength="100"
+  onChange={[Function]}
+  placeholder="plsh"
+/>
+`;
+
+exports[`FormRadioButtons rendering... 1`] = `
+<form>
+  <div
+    className="rb_i"
+    key="k1"
+  >
+    <input
+      className="form_radio"
+      defaultChecked={true}
+      id="k1"
+      name="id"
+      onChange={[Function]}
+      type="radio"
+      value="v1"
+    />
+    <label
+      htmlFor="k1"
+    >
+      v1
+    </label>
+  </div>
+  <div
+    className="rb_i"
+    key="k2"
+  >
+    <input
+      className="form_radio"
+      defaultChecked={false}
+      id="k2"
+      name="id"
+      onChange={[Function]}
+      type="radio"
+      value="v2"
+    />
+    <label
+      htmlFor="k2"
+    >
+      v2
+    </label>
+  </div>
+  <div
+    className="rb_i"
+    key="k3"
+  >
+    <input
+      className="form_radio"
+      defaultChecked={false}
+      id="k3"
+      name="id"
+      onChange={[Function]}
+      type="radio"
+      value="v3"
+    />
+    <label
+      htmlFor="k3"
+    >
+      v3
+    </label>
+  </div>
+  <div
+    className="rb_i"
+    key="k4"
+  >
+    <input
+      className="form_radio"
+      defaultChecked={false}
+      id="k4"
+      name="id"
+      onChange={[Function]}
+      type="radio"
+      value="v4"
+    />
+    <label
+      htmlFor="k4"
+    >
+      v4
+    </label>
+  </div>
+  <div
+    className="rb_i"
+    key="k5"
+  >
+    <input
+      className="form_radio"
+      defaultChecked={false}
+      id="k5"
+      name="id"
+      onChange={[Function]}
+      type="radio"
+      value="v5"
+    />
+    <label
+      htmlFor="k5"
+    >
+      v5
+    </label>
+  </div>
+</form>
+`;
+
+exports[`ProgressBar rendering... 1`] = `
+<div
+  className="prgs_cnt"
+>
+  <div
+    className="prgs_fill"
+    style={
+      Object {
+        "width": "50%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`SummaryList rendering... 1`] = `
+<ul
+  className="sum_ul"
+>
+  <li
+    className="sum_i"
+    key="k1"
+  >
+    <p
+      className="sum_i_t"
+    >
+      k1
+    </p>
+    <p
+      className="sum_i_v"
+    >
+      v1
+    </p>
+  </li>
+  <li
+    className="sum_i"
+    key="k2"
+  >
+    <p
+      className="sum_i_t"
+    >
+      k2
+    </p>
+    <p
+      className="sum_i_v"
+    >
+      v2
+    </p>
+  </li>
+</ul>
+`;
