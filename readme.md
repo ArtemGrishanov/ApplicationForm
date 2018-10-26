@@ -11,6 +11,13 @@ Two types of input are supported:
 - FormInput
 - FormRadioButtons
 
+## Clone and Install
+```
+git clone https://github.com/ArtemGrishanov/ApplicationForm
+cd ApplicationForm
+npm install
+```
+
 ## Launch
 To run project locally please type:
 ```

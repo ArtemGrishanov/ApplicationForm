@@ -68,12 +68,13 @@ exports[`ApplicationForm rendering 1`] = `
 `;
 
 exports[`FormButton rendering... 1`] = `
-<button
+<a
   className="btn"
+  href={null}
   onClick={[Function]}
 >
   Text
-</button>
+</a>
 `;
 
 exports[`FormInput rendering... 1`] = `
