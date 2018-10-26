@@ -5,9 +5,8 @@ import ApplicationForm from './components/ApplicationForm'
 import { TENANT_SCHEMA } from './config'
 
 // AppicationForm component knows how to request user data
-ReactDOM.render(<ApplicationForm schema={TENANT_SCHEMA} onSubmit={(data) => {
+ReactDOM.render(<ApplicationForm schema={TENANT_SCHEMA} exitLink="https://www.home.ht/" onSubmit={(data) => {
     console.log(data);
-    alert('Submitted! Data printed to console.');
 }}/>, document.getElementById('id-root'));
 
 // can build other Forms easely

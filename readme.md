@@ -16,7 +16,7 @@ To run project locally please type:
 ```
 npm start
 ```
-For your convenience, you can view deployed project here http://appform.surge.sh (Demo)
+For your convenience, you can view deployed project here http://appform.surge.sh (demo).
 Use your mobile device to test the component. If you have any bugs or problems, please let me know.
 
 ## Test

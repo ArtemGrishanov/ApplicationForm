@@ -13,7 +13,8 @@ export default class ApplicationForm extends React.Component {
             progress: 0,
             dataOpacity: 1,
             formData: new Map(), // stores inputted user data
-            isCurrentStepCompleted: false // indicates, we can move next
+            isCurrentStepCompleted: false, // indicates, we can move next
+            submitted: false
         };
         this.onBackClick = this.onBackClick.bind(this);
         this.onNextClick = this.onNextClick.bind(this);
@@ -73,6 +74,9 @@ export default class ApplicationForm extends React.Component {
         if (this.props.onSubmit) {
             this.props.onSubmit(this.state.formData);
         }
+        this.setState({
+            submitted: true
+        });
     }
 
     onBackClick() {
@@ -98,14 +102,14 @@ export default class ApplicationForm extends React.Component {
     }
 
     render() {
-        const isSummary = this.state.progress >= this.state.maxStepsCount;
-        const schemaStep = isSummary ? null: this.props.schema[this.state.progress];
+        const isSummary = this.state.progress >= this.state.maxStepsCount && !this.state.submitted;
+        const schemaStep = (isSummary || this.state.submitted) ? null: this.props.schema[this.state.progress];
 
         return (
             <div className="frm_wr">
                 <div className="frm_cont">
-                    <ProgressBar percentage={this.state.progress/this.state.maxStepsCount * 100 + 1}/>
-                    {isSummary === false &&
+                    <ProgressBar percentage={(this.state.submitted) ? 100 :(this.state.progress/(this.state.maxStepsCount+1) * 100 + 1)}/>
+                    {schemaStep &&
                         <div className={"frm_data mt20 " + (this.state.dataOpacity == 1 ? "__shown": "")}>
                             <p className="frm_ttl">{schemaStep.title}</p>
                             {schemaStep.data.map((item, index) => {
@@ -127,15 +131,24 @@ export default class ApplicationForm extends React.Component {
                             <SummaryList dataArray={this.getSummaryData()}/>
                         </div>
                     }
+                    {this.state.submitted === true &&
+                        <div className={"frm_data mt20 " + (this.state.dataOpacity == 1 ? "__shown": "")}>
+                            <p className="frm_ttl">Submitted!</p>
+                            <p className="frm_data_ttl">Click link below to exit</p>
+                        </div>
+                    }
                     <div className="frm_btns">
-                        {this.state.progress > 0 &&
+                        {this.state.submitted === false && this.state.progress > 0 &&
                             <FormButton text="Back" onClick={this.onBackClick}/>
                         }
-                        {isSummary === false &&
+                        {this.state.submitted === false && isSummary === false &&
                             <FormButton disabled={!this.state.isCurrentStepCompleted} text="Next" onClick={this.onNextClick}/>
                         }
                         {isSummary === true &&
                             <FormButton text="Submit" onClick={this.onSubmitClick}/>
+                        }
+                        {this.state.submitted === true &&
+                            <FormButton text="Close" link={this.props.exitLink}/>
                         }
                     </div>
                 </div>
