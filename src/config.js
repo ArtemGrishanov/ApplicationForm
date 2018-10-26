@@ -1,7 +1,7 @@
 import React from 'react'
 import FormInput from './components/FormInput'
 import FormRadioButtons from './components/FormRadioButtons'
-import { validateEmail } from './helper'
+import { validateEmail, validatePhoneNumber } from './helper'
 
 /**
 * Allows to set up a form structure for various cases or test
@@ -12,16 +12,23 @@ export const TENANT_SCHEMA = [
         data: [
             {
                 fieldId: 'user_name',
-                title: 'User Name',
+                title: 'Full Name',
                 component: FormInput,
-                placeholder: 'ex. Alex Brown'
+                placeholder: 'Hans Müller'
             },
             {
                 fieldId: 'user_email',
-                title: 'User Email',
+                title: 'Email',
                 component: FormInput,
-                placeholder: 'myemail@gmail.com',
+                placeholder: 'me@example.com',
                 validateFunction: validateEmail
+            },
+            {
+                fieldId: 'user_phone',
+                title: 'Phone Number',
+                component: FormInput,
+                placeholder: '(+49 30) 12 34 56 78',
+                validateFunction: validatePhoneNumber
             }
         ]
     },
@@ -30,7 +37,7 @@ export const TENANT_SCHEMA = [
         data: [
             {
                 fieldId: 'user_salary',
-                title: 'Salary',
+                title: 'Salary options',
                 component: FormRadioButtons,
                 options: [
                     {key: "0_1000", text: "0 - 1.000"},

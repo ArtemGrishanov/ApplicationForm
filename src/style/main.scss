@@ -1,22 +1,171 @@
+$activeColor: #2e3642;
+$passiveColor: #efefef;
+$passiveBtnColor: #999;
+$fontColor: #444;
+$fontAltColor: #00b2a9;
+$fontBtnColor: #fff;
+$fontPassiveColor: #aaa;
+
+$fontSize: 16px;
+$titleFontSize: 24px;
+
+$animDuration: 0.4s;
+
 body {
     margin: 0;
     padding: 0;
-    color: #444;
+    color: $fontColor;
     font-family: Helvetica, sans-serif;
 }
-input {
-    background-color: #efefef;
+p, ul {
+    margin: 0;
+    padding: 0;
+}
+.btn {
+    min-width: 100px;
+    background-color: $activeColor;
+    padding: 0.9em;
+    color: $fontBtnColor;
+    font-size: $fontSize;
     border-radius: 4px;
     outline: none;
-}
-button {
-    background-color: #2e3642;
-    padding: 10px;
-    color: #fff;
-    border-radius: 4px;
+    user-select: none;
+    border: none;
+    transition: background-color $animDuration;
 
     &.__disabled {
-        background-color: #999;
+        background-color: $passiveBtnColor;
         cursor: initial;
     }
+
+    & + & {
+        margin-left: 1em;
+    }
+}
+
+//
+// Main form styles
+//
+.frm_wr {
+    padding: 20px;
+}
+.frm_cont {
+    margin: 0 auto;
+    max-width: 400px;
+    min-width: 100px;
+}
+.frm_data {
+    opacity: 0;
+    
+    &.__shown {
+        opacity: 1;
+        transition: opacity $animDuration;
+    }
+}
+.frm_ttl {
+    font-size: $titleFontSize;
+    padding: 0;
+    margin: 1em 0;
+}
+.frm_data_i {
+    & + & {
+        margin-top: 1em;
+    }
+}
+.frm_data_ttl {
+    font-size: $fontSize;
+    padding: 0;
+    margin: 4px 0;
+    font-weight: 100;
+}
+.frm_btns {
+    margin: 1em 0;
+    text-align: right;
+}
+
+//
+// Buttons
+//
+.formInput {
+    background-color: $passiveColor;
+    border-radius: 4px;
+    outline: none;
+    padding: 0.9em;
+    font-size: $fontSize;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: $fontPassiveColor;
+        font-weight: 100;
+    }
+}
+
+//
+// Summary
+//
+.sum_ul {
+    margin: 0;
+    padding: 0;
+}
+.sum_i {
+    list-style: none;
+    padding: 14px 0;
+
+    & + & {
+        border-top: 1px solid #eaeaea;
+    }
+
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.sum_i_t {
+    float: left;
+    margin-right: 5%;
+    color: $fontAltColor;
+}
+.sum_i_v {
+    float: left;
+}
+
+//
+// ProgressBar
+//
+.prgs_cnt {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: $passiveColor;
+    border-radius: 4px;
+}
+.prgs_fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 5px;
+    background-color: $activeColor;
+    border-radius: 4px;
+    transition: width $animDuration;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+//
+// Radio Button Controls
+//
+.form_radio {
+    width: 2em;
+    height: 2em;
+    margin-top: -1px;
+    vertical-align: middle;
+}
+.rb_i {
+    padding: 4px 0;
 }
